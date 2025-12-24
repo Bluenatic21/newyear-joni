@@ -1,0 +1,200 @@
+﻿:root {
+  --card-bg: rgba(18, 18, 18, .62);
+  --text: #fff;
+  --muted: rgba(255, 255, 255, .78);
+  --stroke: rgba(255, 255, 255, .12);
+}
+
+* {
+  box-sizing: border-box
+}
+
+html,
+body {
+  height: 100%
+}
+
+html,
+body {
+  background: #000;
+}
+
+/* чтобы не было серого фона */
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  overflow: hidden;
+}
+
+/* Background video */
+.bgVideo {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity .35s ease;
+  filter: saturate(1.05) contrast(1.05);
+}
+
+body.video-on .bgVideo {
+  opacity: 1;
+}
+
+/* Fallback background image + dark overlay above video */
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, .45), rgba(0, 0, 0, .62)),
+    url("assets/bg.jpg") center/cover no-repeat;
+}
+
+/* ВАЖНО: когда видео включено — убираем картинку, оставляем только затемнение */
+body.video-on .bg {
+  background: linear-gradient(180deg, rgba(0, 0, 0, .45), rgba(0, 0, 0, .62));
+}
+
+/* Card */
+.card {
+  position: relative;
+  z-index: 2;
+  width: min(720px, 92vw);
+  margin: 8vh auto;
+  padding: 28px 26px 18px;
+  background: var(--card-bg);
+  border: 1px solid var(--stroke);
+  border-radius: 22px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 16px 60px rgba(0, 0, 0, .45);
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--stroke);
+  background: rgba(255, 255, 255, .06);
+  font-weight: 600;
+  letter-spacing: .06em;
+  margin-bottom: 10px;
+}
+
+h1 {
+  margin: 6px 0 10px;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.1;
+}
+
+.name {
+  opacity: .95
+}
+
+.sub {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 10px 0 10px;
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid var(--stroke);
+  background: rgba(255, 255, 255, .10);
+  color: var(--text);
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: transform .08s ease, background .15s ease;
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, .14);
+}
+
+.btn:active {
+  transform: scale(.99);
+}
+
+.btn:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+.btn.secondary {
+  background: rgba(255, 255, 255, .06);
+}
+
+.hint {
+  margin: 8px 0 0;
+  color: rgba(255, 255, 255, .65);
+  font-size: 13px;
+}
+
+footer {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--stroke);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.small {
+  font-size: 12px;
+  color: rgba(255, 255, 255, .65);
+}
+
+/* Start overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, .55);
+  z-index: 50;
+}
+
+.overlayBox {
+  width: min(520px, 92vw);
+  padding: 22px 18px;
+  border-radius: 18px;
+  border: 1px solid var(--stroke);
+  background: rgba(18, 18, 18, .72);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 16px 60px rgba(0, 0, 0, .45);
+  text-align: center;
+}
+
+.overlayTitle {
+  font-size: 22px;
+  font-weight: 750;
+  margin-bottom: 8px;
+}
+
+.overlayText {
+  color: var(--muted);
+  margin-bottom: 14px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+@media (max-width:480px) {
+  .card {
+    margin: 6vh auto;
+    padding: 22px 18px 14px;
+  }
+}

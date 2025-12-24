@@ -1,0 +1,59 @@
+﻿<!doctype html>
+<html lang="ka">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>გილოცავ ახალ წელს, ჯონი!</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Фоновое видео (включится после "დაწყება") -->
+  <video id="bgVideo" class="bgVideo" playsinline muted loop preload="auto" poster="assets/bg.jpg">
+    <source src="assets/santa.mp4" type="video/mp4" />
+  </video>
+
+  <!-- Затемнение поверх видео -->
+  <div class="bg"></div>
+
+  <!-- Модалка-старт (нужна для обхода блокировки аудио/видео) -->
+  <div id="startOverlay" class="overlay" hidden>
+    <div class="overlayBox">
+      <div class="overlayTitle">გილოცავ ახალ წელს, ჯონი!</div>
+      <div class="overlayText">დააჭირე ერთხელ — მუსიკა და ვიდეო ჩაირთვება.</div>
+      <button id="startBtn" class="btn">დაწყება</button>
+    </div>
+  </div>
+
+  <main class="card">
+    <div class="badge">2026</div>
+    <h1>გილოცავ ახალ წელს, <span class="name">ჯონი</span>!</h1>
+    <p class="sub">
+      იყოს ეს წელი ლამაზი მოვლენების, დიდი ფინანსების და მყარი ნერვების მომტანი 😂
+      მადლობა, რომ არსებობ და გვერდში ხარ ❤️
+      შენი სეკრეტ სანტა 🎅🏼
+    </p>
+
+    <div class="controls">
+      <button id="playBtn" class="btn">მუსიკის ჩართვა</button>
+      <button id="pauseBtn" class="btn secondary" disabled>პაუზა</button>
+    </div>
+
+    <p class="hint">
+      თუ მუსიკა არ იწყება — დააჭირე “მუსიკის ჩართვას” კიდევ ერთხელ (ბრაუზერები ავტომატურ გაშვებას ბლოკავენ).
+    </p>
+
+    <footer>
+      <div class="small">ბარათი QR-ით • newyear-ჯონი</div>
+    </footer>
+  </main>
+
+  <audio id="audio" preload="auto">
+    <source src="assets/music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
